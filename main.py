@@ -1,6 +1,5 @@
 # Import pandas
 import pandas as pd
-import math
 
 GRAVITATIONAL_CONSTANT = 6.67e-11
 
@@ -33,10 +32,11 @@ gravity = []
 print(data.shape)
 
 #gravity = (G*M)/r^2
-for mass in data["Mass"]:
-    for radius in data["Radius"]:
-        gravity.append(GRAVITATIONAL_CONSTANT * mass / math.pow(radius,2))
-        break
+for i in data["Unnamed: 0.1"]:
+    mass = data["Mass"][i]
+    radius = data["Radius"][i]
+    gravity.append(GRAVITATIONAL_CONSTANT * mass / (radius**2))
+    print("i=",i)
 
 data["Gravity"] = gravity
 
