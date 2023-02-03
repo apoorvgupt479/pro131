@@ -23,8 +23,6 @@ data["Mass"] = data["Mass"]*1.989e+30
 
 data["Distance"] = pd.to_numeric(data.Distance,errors='coerce')
 
-
-
 print(data.head())
 
 gravity = []
@@ -36,7 +34,6 @@ for i in data["Unnamed: 0.1"]:
     mass = data["Mass"][i]
     radius = data["Radius"][i]
     gravity.append(GRAVITATIONAL_CONSTANT * mass / (radius**2))
-    print("i=",i)
 
 data["Gravity"] = gravity
 
@@ -47,3 +44,4 @@ print(data.shape)
 print(data.dtypes)
 
 data.to_csv("gravity_data.csv")
+print("gravity_data.csv created!")
